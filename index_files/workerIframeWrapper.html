@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<!-- saved from url=(0014)about:internet -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+<script src="./workerIframeWrapper.04ee1bb3.bundle.min.js.download"></script></head>
+<body>
+<script type="application/javascript">
+  function isEditorOrigin(origin) {
+    return ['https://editor.wix.com', 'https://create.editorx.com', 'https://blocks.wix.com'].includes(origin)
+  }
+
+  const listener = function(params) {
+    if (!params.data || !params.data.workerWrapperScript || !isEditorOrigin(params.origin)) {
+      return
+    }
+
+    const script = document.createElement('script')
+    script.src = params.data.workerWrapperScript
+    document.head.appendChild(script)
+    window.removeEventListener('message', listener)
+  }
+
+  window.addEventListener('message', listener)
+</script>
+
+
+</body></html>
