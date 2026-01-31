@@ -2,603 +2,1062 @@
 <html lang="en">
 
 <head>
-  <!-- Required meta tags-->
-  <meta charset="utf-8">
-  <meta name="google-site-verification" content="RBmbEw9BH1sCTvABu-DVIKqjyRwb8afCHetMnFV9d2k" />
-  <!-- Title-->
-  <title>Ishav Verma | Portfolio</title>
-  <!-- Description-->
-  <meta name="description" content="Portfolio site of Ishav Verma">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <!-- Favicons-->
-  <link rel="apple-touch-icon" sizes="180x180" href="img/favicons/Picture1.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="img/favicons/Picture1_32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="img/favicons/Picture1_16.png">
-  <!-- Web fonts-->
- 
-  <link href="https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i&display=swap" rel="stylesheet">
-  <!-- CSS vendors-->
-  <link rel="stylesheet" href="css/bootstrap-custom.css">
-  <link rel="stylesheet" href="css/ionicons.min.css">
-  <link rel="stylesheet" href="css/tiny-slider.css">
-  <link rel="stylesheet" href="css/lity.min.css">
-  <link rel="stylesheet" href="css/simplebar.min.css">
-  <link rel="stylesheet" href="css/jquery.mb.YTPlayer.min.css">
-  <!-- Main CSS-->
-  <link rel="stylesheet" href="css/main.css">
-  <!-- CSS Color scheme-->
-  <link id="color-scheme" rel="stylesheet" href="css/colors/main-darkgreen.css">
-  <!-- Custom CSS (Add your custom CSS styles to this file)-->
-  <link rel="stylesheet" href="css/custom.css">
-  <!-- removeIf(customizerDist)-->
-  <link rel="stylesheet" href="../customizer/main.css">
-  <!-- endremoveIf(customizerDist)-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ishav Verma - AI Researcher & Generative AI Specialist</title>
+    <meta name="description"
+        content="Ishav Verma - Product Engineer (GenAI) at TCS, AWS & IBM Certified AI Practitioner. Portfolio showcasing experience in Generative AI, Machine Learning, and Cloud Computing.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #6366f1;
+            --accent: #8b5cf6;
+            --bg: #000000;
+            --card-bg: #0a0a0a;
+            --text: #ffffff;
+            --text-muted: #a0a0a0;
+            --border: rgba(255, 255, 255, 0.08);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Neural Network Canvas */
+        #neural-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.4;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            transition: transform 0.3s;
+        }
+
+        .logo:hover {
+            transform: translateY(-2px);
+        }
+
+        .logo-text {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--primary);
+            transition: width 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--text);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+            padding: 2rem;
+        }
+
+        .hero-tag {
+            font-size: 0.85rem;
+            color: var(--primary);
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+        }
+
+        .hero-title {
+            font-size: 4.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            font-family: 'Space Grotesk', sans-serif;
+            line-height: 1.1;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+
+        .hero-role {
+            font-size: 1.1rem;
+            color: var(--primary);
+            margin-bottom: 3rem;
+            font-weight: 500;
+        }
+
+        .cta {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .cta:hover {
+            background: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 40px rgba(99, 102, 241, 0.3);
+        }
+
+        /* Sections */
+        section {
+            position: relative;
+            z-index: 1;
+            padding: 8rem 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 4rem;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .section-subtitle {
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        /* Grid Layouts */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .text p {
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .highlight {
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        /* Stats */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .stat {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .stat:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 1px;
+            background: var(--border);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            padding-left: 2rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2.25rem;
+            top: 0.5rem;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--primary);
+            border: 2px solid var(--bg);
+        }
+
+        .timeline-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-company {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-date {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-desc {
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-bottom: 5rem;
+        }
+
+        .skill-cat {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            transition: all 0.3s;
+        }
+
+        .skill-cat:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .skill-cat h3 {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+        }
+
+        .tag {
+            background: rgba(99, 102, 241, 0.1);
+            color: var(--text-muted);
+            padding: 0.4rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            border: 1px solid var(--border);
+            transition: all 0.3s;
+        }
+
+        .tag:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        /* Certifications */
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .cert {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            transition: all 0.3s;
+        }
+
+        .cert:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .cert-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .cert-title {
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .cert-issuer {
+            color: var(--primary);
+            font-size: 0.9rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .cert-date {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+
+        /* Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .project {
+            background: var(--card-bg);
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .project:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .project-header {
+            padding: 3rem 2rem;
+            text-align: center;
+            background: rgba(99, 102, 241, 0.05);
+        }
+
+        .project-icon {
+            font-size: 3rem;
+        }
+
+        .project-body {
+            padding: 2rem;
+        }
+
+        .project-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .project-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .project-tag {
+            background: rgba(99, 102, 241, 0.1);
+            color: var(--text-muted);
+            padding: 0.3rem 0.7rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            border: 1px solid var(--border);
+        }
+
+        /* Contact */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .contact p {
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .contact-links {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.2rem;
+            background: var(--card-bg);
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            color: var(--text);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .contact-link:hover {
+            border-color: var(--primary);
+            transform: translateX(5px);
+        }
+
+        .contact-icon {
+            font-size: 1.5rem;
+        }
+
+        .contact-text span {
+            display: block;
+        }
+
+        .contact-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .contact-value {
+            font-weight: 500;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        footer strong {
+            color: var(--text);
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .cert-grid,
+            .projects-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+
+            .grid-2,
+            .contact-grid,
+            .skills-grid,
+            .cert-grid,
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            nav ul {
+                display: none;
+            }
+
+            section {
+                padding: 4rem 1.5rem;
+            }
+
+            .nav-container {
+                padding: 0 1.5rem;
+            }
+        }
+    </style>
 </head>
 
-<body class="theme-dark">
-  <!-- Preloader-->
-  <div class="preloader">
-    <div class="preloader-block">
-      <div class="preloader-icon"><span class="loading-dot loading-dot-1"></span><span class="loading-dot loading-dot-2"></span><span class="loading-dot loading-dot-3"></span></div>
-    </div>
-  </div>
-  <div id="overlay-effect"></div>
-  <!-- Navbar-->
-  <nav class="navbar-expand-md navbar fixed-top" id="navbar">
-    <!-- <a class="navbar-brand" data-scroll="" href="#home-area">
-      <img class="img-fluid" src="img/img" alt="Logo">
-    </a> -->
-    <span class="navbar-menu ml-auto" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" role="button"><span class="btn-line"></span></span>
-    <div class="collapse navbar-collapse order-1 order-lg-0" id="navbarSupportedContent">
-      <!-- Navbar menu-->
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-        <li class="nav-item"><a class="nav-link" href="#edu">Education</a></li>
-        <li class="nav-item"><a class="nav-link" href="#haw">Achievements</a></li>
-        <li class="nav-item"><a class="nav-link" href="#projects">Projects & Resources</a></li>
-        <li class="nav-item"><a class="nav-link" href="#blog">Sessions</a></li>
-      </ul>
-    </div>
-  </nav>
-  <!-- Home-->
-  <section class="home-area element-cover-bg video-variant" id="home">
-    <div class="player" id="homeVideo" data-property="{videoURL:'https://www.youtube.com/watch?v=oOkGmK3_Hdg',containment:'#home',autoPlay:true, mute:true, showControls:false, stopMovieOnBlur:false, showYTLogo: false}"></div>
-    <div class="container h-100">
-      <div class="row h-100 align-items-center justify-content-center">
-        <div class="col-12 col-lg-8 home-content text-center">
-          <h1 class="home-name">Ishav<br><span>Verma</span></h1>
-          <h4 class="cd-headline clip home-headline"><span class="cd-words-wrapper single-headline"><b class="is-visible">Computer Science Engineer</b><b>Artificial Intelligence Researcher</b><b>Aspirant Data Scientist</b><b>Tech Instructor: AI-ML & Blockchain</b><b>Freelance Software Engineer & Consultant</b></span></h4>
+<body>
+    <!-- Neural Network Canvas -->
+    <canvas id="neural-canvas"></canvas>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#home" class="logo">
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#6366f1;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#8b5cf6;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <!-- Letter I -->
+                    <rect x="8" y="8" width="6" height="24" rx="1" fill="url(#logoGrad)" />
+
+                    <!-- Letter V -->
+                    <path d="M 18 8 L 24 32 L 30 32 L 36 8 L 31 8 L 27 26 L 23 8 Z" fill="url(#logoGrad)" />
+                </svg>
+                <span class="logo-text">Ishav Verma</span>
+            </a>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
         </div>
-      </div>
-    </div>
-    <div class="fixed-wrapper">
-      <!-- Languages list-->
-      <div class="fixed-block block-left"><!-- 
-        <ul class="list-unstyled languages-list">
-          <li><a href="#0"><span class="single-language">ENG</span></a></li>
-          <li><a href="#0"><span class="single-language">JAP</span></a></li>
-        </ul>
-      </div> -->
-      <!-- Social media icons-->
-      <div class="fixed-block block-right">
-        <ul class="list-unstyled social-icons">
-          <li><a href="https://in.linkedin.com/in/ishavverma" target="_blank"><i class="icon ion-logo-linkedin"></i></a></li>
-          <li><a href="https://github.com/ishavverma" target="_blank"><i class="icon ion-logo-github"></i></a></li>
-          <li><a href="https://www.facebook.com/ishav.verma.3/" target="_blank"><i class="icon ion-logo-facebook"></i></a></li>
-          <li><a href="https://www.instagram.com/ishavverma03" target="_blank"><i class="icon ion-logo-instagram"></i></a></li>
-          <li><a href="https://www.snapchat.com/add/vermaishav" target="_blank"><i class="icon ion-logo-snapchat"></i></a></li>
-          <li><a href="https://twitter.com/ishavverma_" target="_blank"><i class="icon ion-logo-twitter"></i></a></li>
-          <li><a href="https://www.youtube.com/@ishav-verma" target="_blank"><i class="icon ion-logo-youtube"></i></a></li>
-        </ul>
-      </div>
-    </div>
-	</div>
-  </section>
-  <!-- About lightbox-->
-  <div class="lightbox-wrapper" id="about" data-simplebar="">
-    <div class="container">
-      <div class="lightbox-close">
-        <div class="close-btn" data-modal-close=""><span class="btn-line"></span></div>
-      </div>
-      <div class="row">
-        <div class="col-12">
-          <div class="lightbox-content">
-            <div class="row">
-              <div class="col-12">
-                <div class="section-heading page-heading" style="margin-bottom: 15px">
-                  <h2 class="section-title">About Me</h2>
-                  <div class="animated-bar"></div>
-                </div>
-              </div>
-            </div>
-            <!-- Info section-->
-            <div class="info-section single-section">
-              <div class="row align-items-center">
-                <!-- Picture part-->
-                <div class="col-12 col-lg-5 info-img">
-                  <picture>
-                    <source media="(min-width: 990px)" srcset="img/image2.jpg">
-                    <source media="(min-width: 10px)" srcset="img/image2.jpg">
-                    <img id="main-img" class="img-fluid img-thumbnail" alt="About Picture" src="img/image2.jpg">
-                  </picture>
-                </div>
-                <!-- Content part-->
-                <div class="col-12 col-lg-7 info-content">
-                  <div class="content-block">
-                    <h2 class="content-subtitle">Who am i?</h2>
-                    <h6 class="content-title">I'm Ishav Verma</h6>
-                    <div class="content-description">
-                      <!-- <p>I'm a Computer Science & Engineering Student currently pursuing my Bachelors Degree. My Specialization Fields are Artificial Intelligence & Machine Learning also developing my skills on Blockchain & Design Thinking. </p> -->
-                      <p>As an aspiring computer science & engineering student with a keen interest in machine learning, data science, and blockchain technology, I am excited to share my skills and knowledge with the public. Through my coursework, personal projects, and self-study, I have gained a solid understanding of the latest industry trends and cutting-edge technologies in these areas. I am well-versed in various programming languages and tools that are commonly used in these fields, such as Python, TensorFlow, RPA and others. I have had hands-on experience with several projects and experiments, ranging from supervised and unsupervised learning, deep learning and reinforcement learning, computer vision, natural language processing, and others. These projects have helped me to apply my knowledge in practical scenarios and have given me the ability to work with large datasets and complex models. </p>
-                      <p>I am eager to share my knowledge and enthusiasm for these fields through my portfolio, blog, and other public platforms, where I share my learning and projects with others. I believe that by sharing my experience and knowledge, I can inspire others to learn more about these fascinating technologies and how they can be used to drive innovation and make a positive impact on the world. I am also open to mentoring on projects and taking sessions on Machine Learning/Deep Learning & Blockchain, to share my knowledge with others and help them to develop their skills in these areas. I am passionate about helping others to learn and grow in these fields and I would be excited to work with individuals or groups to guide them through their own projects and experiments. I am always looking for opportunities to collaborate and contribute to projects, research, or open-source projects in these fields and to be a part of the community that is constantly pushing the boundaries of what is possible with these technologies.</p>
-                    </div>
-                    <address class="content-info">
-                      <div class="row">
-                        <div class="col-12 col-md-6 single-info"><span>Name:</span>
-                          <p>Ishav Verma</p>
-                        </div>
-                        <div class="col-12 col-md-6 single-info"><span>Email:</span>
-                          <p><a href="mailto:ishavverma03@gmail.com">ishavverma03@gmail.com</a></p>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-12 col-md-6 single-info"><span>Age:</span>
-                          <p>20</p>
-                        </div>
-                        <div class="col-12 col-md-6 single-info"><span>From:</span>
-                          <p>Jammu, India</p>
-                        </div>
-                      </div>
-                    </address>
-                    <div class="d-block d-sm-flex align-items-center">
-			<a class="btn content-download button-main button-scheme" href="https://drive.google.com/file/d/1Iki3Slb5jKgI3jOqIkygByYA-fEGYxiF/view?usp=sharing" target="_blank" role="button">Download Resume</a>
-			<a class="btn content-download button-main button-scheme" href="https://drive.google.com/file/d/1THJjPmVrJO9JSG314CMXiD4ldA21aCqJ/view?usp=sharing" target="_blank" role="button">Download Transcript</a>
-                    <ul class="list-unstyled list-inline content-follow">
-                        <li><a href="https://in.linkedin.com/in/ishavverma" target="_blank"><i class="icon ion-logo-linkedin"></i></a></li>
-                        <li><a href="https://github.com/ishavverma" target="_blank"><i class="icon ion-logo-github"></i></a></li>
-                        <li><a href="https://www.facebook.com/ishav.verma.3/" target="_blank"><i class="icon ion-logo-facebook"></i></a></li>
-                        <li><a href="https://www.instagram.com/ishavverma03" target="_blank"><i class="icon ion-logo-instagram"></i></a></li>
-                        <li><a href="https://www.snapchat.com/add/vermaishav" target="_blank"><i class="icon ion-logo-snapchat"></i></a></li>
-                        <li><a href="https://twitter.com/ishavverma_" target="_blank"><i class="icon ion-logo-twitter"></i></a></li>
-                        <li><a href="https://www.youtube.com/@ishav-verma" target="_blank"><i class="icon ion-logo-youtube"></i></a></li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+    </nav>
 
-            <div class="skills-section single-section" style="margin-bottom: 70px;">
-              <div class="row">
-                <div class="col-12">
-                  <div class="section-heading">
-                    <h2 class="section-title" style="text-align: center; display: block;margin-bottom: 50px">Languages</h2>
-                  </div>
-                </div>
-              </div>
-              <div class="row" style="width: 70%; margin: auto;">
-                <div class="col-12">
-                  <div class="single-skill" data-percentage="100" style="margin-bottom: 40px;">
-                    <div class="skill-info"><span class="skill-name" style="text-align: center;margin: auto;">English</span></div>
-                    <div class="progress skill-progress">
-                      <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="background-color: #009e66"></div>
-                    </div>
-                  </div>
-                </div>
-                <br>
-                <div class="col-12">
-                  <div class="single-skill" data-percentage="100" style="margin-bottom: 40px;">
-                    <div class="skill-info"><span class="skill-name" style="text-align: center;margin: auto;">Hindi</span></div>
-                    <div class="progress skill-progress">
-                      <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="background-color: #009e66"></div>
-                    </div>
-                  </div>
-                </div>
-                <br>
-              </div>
-            </div>
-            <!-- Services section-->
-            <div class="services-section single-section" style="text-align: center;">
-              <div class="row">
-                <div class="col-12">
-                  <div class="section-heading">
-                    <h2 class="section-title" style="text-align: center; display: block;">Research Interests</h2>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <!-- Single service-->
-                <div class="col-6 col-md-6 col-lg-4">
-                  <div class="single-service"><i class="icon service-icon ion-ios-eye"></i>
-                    <br>
-                    <span class="service-title" class="cpi">Computer Vision</span>
-                  </div>
-                </div>
-                <!-- Single service-->
-                <div class="col-6 col-md-6 col-lg-4">
-                  <div class="single-service"><i class="icon service-icon ion-ios-document"></i>
-                    <br>
-                    <span class="service-title" class="cpi">Data Analysis</span>
-                  </div>
-                </div>
-                <!-- Single service-->
-                <div class="col-6 col-md-6 col-lg-4">
-                  <div class="single-service"><i class="icon service-icon ion-ios-construct"></i>
-                    <br>
-                    <span class="service-title" class="cpi">Robotic Process Automation</span>
-                  </div>
-		 </div>
-                <!-- Single service-->
-                <div class="col-6 col-md-6 col-lg-4">
-                  <div class="single-service"><i class="icon service-icon ion-md-stats"></i>
-                    <br>
-                    <span class="service-title" class="cpi">Machine Learning</span>
-                  </div>
-                </div>
-                <!-- Single service-->
-                <div class="col-6 col-md-6 col-lg-4">
-                  <div class="single-service"><i class="icon service-icon ion-ios-swap"></i>
-                    <br>
-                    <span class="service-title" class="cpi">Blockchain</span>
-                  </div>
-                </div>
-                <!-- Single service-->
-                <div class="col-6 col-md-6 col-lg-4">
-                  <div class="single-service"><i class="icon service-icon ion-ios-chatboxes"></i>
-                    <br>
-                    <span class="service-title" class="cpi" style="font-size:19px;">Natural Language Processing</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+    <!-- Hero -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-tag">AI Researcher & Engineer</div>
+            <h1 class="hero-title">Ishav Verma</h1>
+            <p class="hero-subtitle">Generative AI Specialist · Machine Learning Expert</p>
+            <p class="hero-role">Product Engineer (GenAI) @ Tata Consultancy Services</p>
+            <a href="#contact" class="cta">Get in Touch</a>
         </div>
-      </div>
-    </div>
-  </div>
+    </section>
 
-  <div class="lightbox-wrapper" id="haw" data-simplebar="">
-    <div class="container">
-      <div class="lightbox-close">
-        <div class="close-btn" data-modal-close=""><span class="btn-line"></span></div>
-      </div>
-      <div class="row">
-        <div class="col-12">
-          <div class="lightbox-content">
-            
-            <div class="testimonials-section single-section">
-              <div class="row">
-                <div class="col-12">
-                  <div class="section-heading">
-                    <h2 class="section-title" style="text-align: center; display: block;">Achievements</h2>
-                  </div>
-                </div>
-              </div>
-              <div class="my-slider">
-                <div class="slider-item">
-                  <div class="single-review swiper-slide" style="text-align: center;">
-                    <div class="review-header d-flex justify-content-between">
-                      <div class="review-client">
-                        <div class="media"> 
-                          <div class="client-details">
-                            <span class="client-name" style="color: #009e66; font-size: 30px;line-height:30px">SIH 2022 Winner</span><br><br><span class="client-role">Winning team at SIH-2022 lead by me. We had a wonderful journey throughout the hackathon & learned a lot.</span><br><br><span>Aug 2022</span>
-                            <span style="margin-left: 20px;" class="item-details"><a href="https://www.linkedin.com/posts/ishavverma_team-sih2022-sih-activity-6969526234141634560-qMW_?utm_source=share&utm_medium=member_desktop" target="_blank"><b>View Post</b></a></span>
-                          </div>
-                        </div>
-                      </div><i class="icon ion-ios-ribbon" style="color: #009e66; font-size: 45px;"></i>
-                    </div>
-                    <img src="img/sih-win.jpeg" style="height: 70%;width: 70%;" alt="Client"></div>
-                  </div>
-                <!-- <div class="slider-item">
-                  <div class="single-review swiper-slide" style="text-align: center;">
-                    <div class="review-header d-flex justify-content-between">
-                      <div class="review-client">
-                        <div class="media"> 
-                          <div class="client-details">
-                            <span class="client-name" style="color: #009e66; font-size: 30px;line-height:30px">SIH 2022 Winner</span><br><br><span class="client-role">Winning team at SIH-2022 lead by me. We had a wonderful journey throughout the hackathon & learned a lot.</span><br><br><span>Aug 2022</span>
-                            <span style="margin-left: 20px;" class="item-details"><a href="https://www.linkedin.com/posts/ishavverma_team-sih2022-sih-activity-6969526234141634560-qMW_?utm_source=share&utm_medium=member_desktop" target="_blank"><b>View Post</b></a></span>
-                          </div>
-                        </div>
-                      </div><i class="icon ion-ios-ribbon" style="color: #009e66; font-size: 45px;"></i>
-                    </div>
-                    <img src="img/sih-win.jpeg" style="height: 70%;width: 70%;" alt="Client"></div>
-                  </div> -->
-                </div>
-              </div>
+    <!-- About -->
+    <section id="about">
+        <h2 class="section-title">About</h2>
+        <div class="grid-2">
+            <div class="text">
+                <p>I'm a <span class="highlight">Product Engineer (GenAI) at Tata Consultancy Services</span>, leading
+                    AI and ML
+                    initiatives to drive innovation and enhance system efficiencies across enterprise solutions.</p>
+
+                <p>Currently focused on <span class="highlight">Generative AI research and development</span>, exploring
+                    foundation models and cutting-edge AI applications. I hold a degree in <span
+                        class="highlight">Computer Science with AI specialization</span>.</p>
+
+                <p>Certified by <span class="highlight">AWS, IBM, Google Cloud, and McKinsey</span>, with expertise
+                    spanning neural networks, cloud computing, cybersecurity, and blockchain technology.</p>
             </div>
-          </div>
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-value">16+</div>
+                    <div class="stat-label">Certifications</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">20+</div>
+                    <div class="stat-label">Projects</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">4+</div>
+                    <div class="stat-label">Years in AI/ML</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">TCS</div>
+                    <div class="stat-label">Product Engineer (GenAI)</div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
+    </section>
 
-  <!-- Education lightbox -->
-  <div class="lightbox-wrapper" id="edu" data-simplebar="">
-    <div class="container">
-      <div class="lightbox-close">
-        <div class="close-btn" data-modal-close=""><span class="btn-line"></span></div>
-      </div>
-      <div class="row">
-        <div class="col-12">
-          <div class="lightbox-content">
-            <div class="row">
-              <div class="col-12">
-                <div class="section-heading page-heading">
-                  <h2 class="section-title">Education</h2>
-                  <div class="animated-bar"></div>
-                </div>
-              </div>
+    <!-- Experience -->
+    <section id="experience">
+        <h2 class="section-title">Experience</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <h3 class="timeline-title">Product Engineer (GenAI)</h3>
+                <div class="timeline-company">Tata Consultancy Services</div>
+                <div class="timeline-date">April 2025 - Present</div>
+                <p class="timeline-desc">Leading AI and ML initiatives, implementing enterprise-scale AI solutions, and
+                    contributing to Generative AI research and development.</p>
             </div>
-            <!-- Resume section-->
-            <div class="resume-section single-section">
-              <div class="row" style="text-align: center">
-                <!-- Education part-->
-                <div class="col-12">
-                  <div class="col-block education">
-                    <div class="row">
-                      <div class="col-12 col-md-6" style="padding-bottom: 20px">
-                        <img src="img/miet_logo.png" alt="Client" style="height: 150px; width: 150px">
-                      </div>
-                      <div class="col-12 col-md-6">
-                        <div class="resume-item"><span class="item-arrow"></span>
-                          <h4 class="item-title" style="color:#009e66">Bachelor's Degree</h4><span class="item-details"><b><em>Model Institute of Engineering and Technology</em></b><br>Dec 2020 - Dec 2024 (Expected)</span>
-                          <p class="item-description">B.E. in Computer Science & Engineering<br></b></p>
-                        </div>
-                      </div>
-                    </div>
-                    <hr><br>
-                    <div class="row">
-                      <div class="col-12 col-md-6" style="padding-bottom: 20px">
-                          <img src="img/jkboselogo.png" alt="Client">
-                      </div>
-                      <div class="col-12 col-md-6">
-                        <div class="resume-item"><span class="item-arrow"></span>
-                          <h4 class="item-title" style="color:#009e66">High School</h4>
-                          <span class="item-details">
-                            <em>
-                              <b>Jammu & Kashmir Board Of School Education</b>
-                            </em>
-                            <br>
-                            Mar 2020
-                          </span>
-                          <p class="item-description">Science with Mathematics<br></b></p>
-                        </div>
-                      </div>
-                    </div>
-                    <hr><br>
-                    <div class="row">
-                      <div class="col-12 col-md-6" style="padding-bottom: 20px">
-                        <img src="img/coursera-logo.png" alt="Client">
-                      </div>
-                      <div class="col-12 col-md-6">
-                        <div class="resume-item"><span class="item-arrow"></span>
-                          <h4 class="item-title" style="color:#009e66">Additional Courses</h4><span class="item-details"><b><em>Coursera</em></b></span>
-                          <p class="item-description">Interest Fields: Machine Learning, Deep Learning, Data Science, Blockchain<br><b></p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- Session-->
-              </div>
+            <div class="timeline-item">
+                <h3 class="timeline-title">AI/ML Researcher</h3>
+                <div class="timeline-company">Independent Research</div>
+                <div class="timeline-date">Ongoing</div>
+                <p class="timeline-desc">Conducting research in Generative AI, voice emotion analysis, object
+                    classification, and blockchain integration. Published 20+ projects on GitHub.</p>
             </div>
-          </div>
         </div>
-      </div>
-    </div>
-  </div>
+    </section>
 
-  <div class="lightbox-wrapper" id="projects" data-simplebar="">
-    <div class="container">
-      <div class="lightbox-close">
-        <div class="close-btn" data-modal-close=""><span class="btn-line"></span></div>
-      </div>
-      <div class="row">
-        <div class="col-12">
-          <div class="lightbox-content">
-            <div class="row">
-              <div class="col-12">
-                <div class="section-heading page-heading">
-                  <h2 class="section-title">Projects</h2>
-                  <div class="animated-bar"></div>
-                </div>
-              </div>
-            </div>
-            <!-- Resume section-->
-            <div class="resume-section single-section">
-              <div class="row">
-                <!-- Education part-->
-                <div class="col-12">
-                  <div class="col-block education">
-      <div class="resume-item"><span class="item-arrow"></span>
-                      <h4 class="item-title" style="color:#009e66">Human Voice Tone Emotion Detection</h4><span class="item-details"><b><em>Ishav Verma</em></b><span style="margin-left: 20px;">(Deep Learning Module developed at SIH 2022)</span></span><br>
-                      <span class="item-details"><a href="https://github.com/ishavverma/VoiceToneEmotionAnalysis" target="_blank"><b>Github Repository</b></a></span>
-                      <p class="item-description">In this project, I applied deep learning techniques to detect emotions in human voices. The goal was to build a model that can accurately classify emotions such as happiness, sadness, anger, and neutral based on the tone of a person's voice. The model was trained on a dataset of voice recordings labeled with the corresponding emotions. I used a combination of techniques such as feature extraction, dimensionality reduction, and neural network architectures such as CNNs and RNNs to analyze the audio data and make predictions. Additionally, I also explored different pre-processing techniques to improve the performance of the model. The model was tested on a separate dataset and the results were evaluated using metrics such as accuracy, precision, and recall.</p> 
-                      <p>One of the interesting aspects of this project was the experimentation with the different architectures of neural networks, and the impact of pre-processing techniques on the final outcome. It was developed as a part of my participation in the Smart India Hackathon (SIH) 2022, where we won the competition in our category.</p>
-                      <p>This project has potential applications in the field of emotion detection and speech recognition for various industries such as customer service, mental health, and more. It was a great opportunity for me to learn and implement various techniques of deep learning, and I believe that this project showcases my abilities to work on such projects and my knowledge in the field of machine learning.</p>
-      </div>
-                    <hr><br>
-      <div class="resume-item"><span class="item-arrow"></span>
-                      <h4 class="item-title" style="color:#009e66">TB Detection using X-Ray</h4><span class="item-details"><b><em>Ishav Verma</em></b><span style="margin-left: 20px;">(Deep Learning Model based on Computer Vision)</span></span><br>
-                      <span class="item-details"><a href="https://github.com/ishavverma/TB-Prediction" target="_blank"><b>Github Repository</b></a></span>
-                      <p class="item-description">In this project, I used deep learning techniques to develop a model that can detect Tuberculosis (TB) in patients using X-ray images. The model was trained on a dataset of labeled X-ray images, and it uses a combination of techniques such as image pre-processing, feature extraction and neural network architectures like CNNs to analyze and classify the images. The model was tested on a separate dataset and the performance was evaluated using metrics like accuracy, precision and recall.</p> 
-                      <p>The challenging aspect of this project was the handling of medical images and the pre-processing techniques required for them, but it was also a great learning experience for me.</p>
-                      <p>This model has potential applications in the field of medical imaging and TB detection, as it can be used as an efficient and accurate tool for early diagnosis of TB. This project allowed me to learn and implement various techniques of deep learning and it showcases my abilities to work on such projects and my knowledge in the field of medical imaging and machine learning.</p>
-      </div>
-                    <hr><br>
-      <div class="resume-item"><span class="item-arrow"></span>
-                      <h4 class="item-title" style="color:#009e66">Brain Tumor Detection & Classification</h4><span class="item-details"><b><em>Ishav Verma</em></b><span style="margin-left: 20px;">(Deep Learning Model based on Computer Vision)</span></span><br>
-                      <span class="item-details"><a href="https://github.com/ishavverma/BrainTumorDetection" target="_blank"><b>Github Repository</b></a></span>
-                      <p class="item-description">In this project, I applied advanced techniques of computer vision and deep learning to develop two separate models, one for the detection of brain tumors and another for the classification of tumors as Meningioma, Glioma & Pituitary tumor. The goal was to build models that can accurately locate and identify tumors in magnetic resonance imaging (MRI) scans. To achieve this, I utilized a dataset of labeled MRI scans to train the models. For the detection model, I implemented a combination of image pre-processing, feature extraction and neural network architectures such as CNNs to analyze the scans and make predictions about the presence of tumors. For the classification model, I used similar techniques to analyze the scans and predict whether the tumors are benign or malignant. Both models were tested on a separate dataset and the results were evaluated using metrics such as accuracy, precision, and recall.</p> 
-                      <p>The most challenging part of this project was the handling of medical images, as it required a lot of pre-processing and cleaning of the data. Despite the challenges, it was a great learning experience for me as I was able to apply various techniques of deep learning, computer vision and medical imaging.</p>
-                      <p>The models developed in this project have the potential to revolutionize the way brain tumors are diagnosed and treated. They can be used as efficient and accurate tools for early diagnosis of brain tumors, which can lead to better treatment outcomes and improved patient outcomes. I believe this project showcases my abilities to work on such projects and my knowledge in the field of medical imaging and machine learning.</p>
-      </div>
-                    <hr><br>
-      <div class="resume-item"><span class="item-arrow"></span>
-                      <h4 class="item-title" style="color:#009e66">Spam Mail Detection</h4><span class="item-details"><b><em>Ishav Verma</em></b><span style="margin-left: 20px;">(Machine Learning Model based on Natural Language Processing)</span></span><br>
-                      <span class="item-details"><a href="https://github.com/ishavverma/SpamMailDetection" target="_blank"><b>Github Repository</b></a></span>
-                      <p class="item-description">In this project, I applied machine learning and natural language processing techniques to develop a model for detecting spam emails. The goal was to build a model that can accurately classify emails as spam or non-spam based on their content. The model was trained on a dataset of emails labeled as spam or non-spam. I used a combination of techniques such as feature extraction, text cleaning, and various machine learning algorithms like Naive Bayes, SVM, and Logistic Regression to analyze the email text and make predictions. </p> 
-                      <p>The challenging parts of this project was the handling of unstructured data, but it was also a great learning experience for me. Additionally, I also implemented techniques like feature selection and hyperparameter tuning to improve the performance of the model.</p>
-                      <p>This project has potential applications in the field of email filtering and spam detection, where it can be used as an efficient and accurate tool to separate important emails from spam. It was a great opportunity for me to learn and implement various techniques of natural language processing and machine learning, and I believe that this project showcases my abilities to work on such projects and my knowledge in the field of NLP and ML.</p>
-      </div>
-                    <hr><br>
-                  </div>
-                </div>
-                <!-- Experience part-->
-              </div>
-            </div>
-          </div>
+    <!-- Skills -->
+    <section id="skills">
+        <h2 class="section-title">Skills & Certifications</h2>
 
-          <div class="lightbox-content">
-            <div class="row">
-              <div class="col-12">
-                <div class="section-heading page-heading">
-                  <h2 class="section-title">Learning & Training Resources</h2>
-                  <div class="animated-bar"></div>
+        <div class="skills-grid">
+            <div class="skill-cat">
+                <h3>🤖 AI & ML</h3>
+                <div class="skill-tags">
+                    <span class="tag">Generative AI</span>
+                    <span class="tag">Deep Learning</span>
+                    <span class="tag">TensorFlow</span>
+                    <span class="tag">PyTorch</span>
                 </div>
-              </div>
             </div>
-            <!-- Resume section-->
-            <div class="resume-section single-section">
-              <div class="row">
-                <!-- Education part-->
-                <div class="col-12">
-                  <div class="col-block education">
-      <div class="resume-item"><span class="item-arrow"></span>
-                      <h4 class="item-title" style="color:#009e66">Machine Learning Notebooks</h4><span class="item-details"><b><em>Ishav Verma</em></b><span style="margin-left: 20px;">(24-Hour AI/ML Training)</span></span><br>
-                      <span class="item-details"><a href="https://github.com/ishavverma/MachineLearning_Notebooks" target="_blank"><b>Github Repository</b></a></span>
-                      <span style="margin-left: 20px;" class="item-details"><a href="https://drive.google.com/file/d/1fBmz7uQCvcGmj73uTECbUgf2nM7oKApK/view?usp=sharing" target="_blank"><b>Course Curriculum</b></a></span>
-                      <p class="item-description">I am excited to share with you the resources and learning materials I have created to help individuals and organizations master the art of Machine Learning. I have been working in the field of Machine Learning throughout my engineering degree, and I believe that the best way to learn is through practical application. That's why I have developed a comprehensive 24-hour course that covers the entire machine learning process, from data pre-processing to model deployment.</p> 
-                      <p>My course is designed for individuals and organizations who want to take their understanding of Machine Learning to the next level. I cover the most important concepts and techniques used in the field today, and I provide hands-on coding tutorials and exercises to help you apply what you've learned.</p>
-                      <p>In addition to my course, I also provide a GitHub repository, that cover various Machine Learning topics & I keep it updating for new models & improving model efficiency. I also offer mentoring and consultation services to help you implement Machine Learning projects. I am also open for collaboration on projects and delivering the Machine Learning course on site or online. I am passionate about helping others learn and apply Machine Learning, and I believe that by working together, we can achieve great results.</p>
-      </div>
-                    <hr><br>
-                  </div>
+            <div class="skill-cat">
+                <h3>💻 Programming</h3>
+                <div class="skill-tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">Flask</span>
+                    <span class="tag">Scikit-learn</span>
+                    <span class="tag">Jupyter</span>
                 </div>
-                <!-- Experience part-->
-              </div>
             </div>
-          </div>
-
+            <div class="skill-cat">
+                <h3>☁️ Cloud</h3>
+                <div class="skill-tags">
+                    <span class="tag">AWS</span>
+                    <span class="tag">Google Cloud</span>
+                    <span class="tag">IBM Cloud</span>
+                    <span class="tag">DevOps</span>
+                </div>
+            </div>
+            <div class="skill-cat">
+                <h3>🚀 Emerging Tech</h3>
+                <div class="skill-tags">
+                    <span class="tag">Blockchain</span>
+                    <span class="tag">IoT</span>
+                    <span class="tag">Cybersecurity</span>
+                    <span class="tag">Design Thinking</span>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-    <center>
-      <h5>Thank you for visiting my portfolio and I look forward to the opportunity of working with you!</h5>
-      <p>Please check out my resources and do not hesitate to reach out to me if you have any questions or are interested in collaborating on a project or taking my course.</p>
-    </center>
-  </div>
 
-  <div class="lightbox-wrapper" id="blog" data-simplebar="">
-    <div class="container">
-      <div class="lightbox-close">
-        <div class="close-btn" data-modal-close=""><span class="btn-line"></span></div>
-      </div>
-      <div class="row">
-        <div class="col-12">
-          <div class="lightbox-content">
-            <div class="row">
-              <div class="col-12">
-                <div class="section-heading page-heading" style="margin-bottom: 50px">
-                  <h2 class="section-title">Sessions</h2>
-                  <div class="animated-bar"></div>
-                </div>
-              </div>
+        <div class="cert-grid">
+            <div class="cert">
+                <div class="cert-icon">🎓</div>
+                <div class="cert-title">AWS Certified AI Practitioner</div>
+                <div class="cert-issuer">Amazon Web Services</div>
+                <div class="cert-date">Jan 2026 - Jan 2029</div>
             </div>
-	    <div class="video-section single-section" style="margin-bottom: 50px">
-              <div class="row align-items-center">
-                <div class="col-12 col-lg-6 content-part" style="text-align: center">
-                  <h3 class="video-title">Introduction to Machine Learning</h3>
-                  <div class="row" style="margin-bottom: 30px;color: #f0f0f0;">
-                    <!-- <div class="col-12" style="text-align: center"><h4 style="color: #009e66">Introduction to Machine Learning</h4></div>-->
-                    <div class="col-6" style="text-align: right;">Offline</div>
-                    <div class="col-6" style="text-align: left;">Nov 2022</div>
-                  </div>
-                  <div class="col-12" style="text-align: left;">
-                    <p class="video-description">This session was designed & delivered specifically for the 1st year students. As being in 1st year of engineering a student is confused about choosing a field of AI/ML as a career path.</p>
-                  </div>
-                </div>
-                <div class="col-12 col-lg-6 video-part" style="margin-top: 50px;">
-                  <img src= "img/IntroML.jpg" style="height: 370px; width: 100%;margin-bottom: 20px;" alt="soai">
-                  <!-- <embed src= "img/Learning Path.pdf" style="height: 370px; width: 100%;"> -->
-                </div>
-              </div>
+            <div class="cert">
+                <div class="cert-icon">☁️</div>
+                <div class="cert-title">AWS Cloud Practitioner</div>
+                <div class="cert-issuer">Amazon Web Services</div>
+                <div class="cert-date">Sept 2023 - Sept 2026</div>
             </div>
-            <hr>
-		<div class="video-section single-section" style="margin-bottom: 50px">
-              <div class="row align-items-center">
-                <div class="col-12 col-lg-6 content-part" style="text-align: center">
-                  <h3 class="video-title">Introduction to Blockchain</h3>
-                  <div class="row" style="margin-bottom: 30px;color: #f0f0f0;">
-                    <!-- <div class="col-12" style="text-align: center"><h4 style="color: #009e66">Introduction to Artificial Intelligence</h4></div> -->
-                    <div class="col-6" style="text-align: right;">Offline</div>
-                    <div class="col-6" style="text-align: left;">Dec 2022</div>
-                  </div>
-                  <div class="col-12" style="text-align: left;">
-                    <p class="video-description">This session was designed & delivered specifically for the 1st year students. As being in 1st year of engineering a student is confused about choosing a field of blockchain as a career path.</p>
-                  </div>
-                </div>
-                <div class="col-12 col-lg-6 video-part" style="margin-top: 50px;">
-                  <img src= "img/IntroBlockchain.jpg" style="height: 370px; width: 100%;margin-bottom: 20px;" alt="soai">
-                  <!-- <embed src= "img/Learning Path.pdf" style="height: 370px; width: 100%;"> -->
-                </div>
-              </div>
+            <div class="cert">
+                <div class="cert-icon">📊</div>
+                <div class="cert-title">Google Cloud Data Analyst</div>
+                <div class="cert-issuer">Google Cloud</div>
+                <div class="cert-date">Certified</div>
             </div>
-            <hr>
-          </div>
+            <div class="cert">
+                <div class="cert-icon">🤖</div>
+                <div class="cert-title">IBM AI/ML Specialist</div>
+                <div class="cert-issuer">IBM</div>
+                <div class="cert-date">Certified</div>
+            </div>
+            <div class="cert">
+                <div class="cert-icon">🌐</div>
+                <div class="cert-title">Zyxel Network Engineer</div>
+                <div class="cert-issuer">Zyxel</div>
+                <div class="cert-date">Certified</div>
+            </div>
+            <div class="cert">
+                <div class="cert-icon">✨</div>
+                <div class="cert-title">Generative AI Foundations</div>
+                <div class="cert-issuer">AWS Educate</div>
+                <div class="cert-date">Dec 2025</div>
+            </div>
+            <div class="cert">
+                <div class="cert-icon">📊</div>
+                <div class="cert-title">McKinsey Forward</div>
+                <div class="cert-issuer">McKinsey & Company</div>
+                <div class="cert-date">Dec 2025</div>
+            </div>
+            <div class="cert">
+                <div class="cert-icon">💡</div>
+                <div class="cert-title">Design Thinking</div>
+                <div class="cert-issuer">IBM SkillsBuild</div>
+                <div class="cert-date">Dec 2025</div>
+            </div>
+            <div class="cert">
+                <div class="cert-icon">🔒</div>
+                <div class="cert-title">ISC2 Candidate</div>
+                <div class="cert-issuer">ISC2</div>
+                <div class="cert-date">Nov 2025 - Nov 2026</div>
+            </div>
         </div>
-      </div>
-    </div>
-  </div>
-  <!-- removeIf(customizerDist)-->
-  <div class="demo-tool">
-    <div class="tool-wrapper">
-      <!-- <span class="tool-toggler"><i class="icon ion-md-settings"></i></span>-->
-      <div class="tool-box">
-        <ul class="list-inline single-block color-switcher">
-          <li class="list-inline-item" style="background-color: #2c31ff;" data-path="css/colors/main-blueviolet.css"></li>
-          <li class="list-inline-item" style="background-color: #3460D1;" data-path="css/colors/main-nightskyblue.css"></li>
-          <li class="list-inline-item" style="background-color: #EE3158;" data-path="css/colors/main-redpink.css"></li>
-          <li class="list-inline-item" style="background-color: #007bff;" data-path="css/colors/main-blue.css"></li>
-          <li class="list-inline-item" style="background-color: #17a2b8;" data-path="css/colors/main-cyan.css"></li>
-          <li class="list-inline-item" style="background-color: #3365b0;" data-path="css/colors/main-darkblue.css"></li>
-          <li class="list-inline-item" style="background-color: #a435b7;" data-path="css/colors/main-darkmagenta.css"></li>
-          <li class="list-inline-item" style="background-color: #c93e70;" data-path="css/colors/main-darkpink.css"></li>
-          <li class="list-inline-item" style="background-color: #bf2a3d;" data-path="css/colors/main-darkred.css"></li>
-          <li class="list-inline-item" style="background-color: #28a745;" data-path="css/colors/main-green.css"></li>
-          <li class="list-inline-item" style="background-color: #6610f2;" data-path="css/colors/main-indigo.css"></li>
-          <li class="list-inline-item" style="background-color: #fd7e14;" data-path="css/colors/main-orange.css"></li>
-          <li class="list-inline-item" style="background-color: #e83e8c;" data-path="css/colors/main-pink.css"></li>
-          <li class="list-inline-item" style="background-color: #6f42c1;" data-path="css/colors/main-purple.css"></li>
-          <li class="list-inline-item" style="background-color: #dc3545;" data-path="css/colors/main-red.css"></li>
-          <li class="list-inline-item" style="background-color: #20c997;" data-path="css/colors/main-teal.css"></li>
-          <li class="list-inline-item" style="background-color: #333;" data-path="css/colors/main-dark.css"></li>
-          <li class="list-inline-item" style="background-color: #78b230;" data-path="css/colors/main-yellowgreen.css"></li>
-          <li class="list-inline-item" style="background-color: #E16F7C;" data-path="css/colors/main-tangopink.css"></li>
-          <li class="list-inline-item" style="background-color: #6F73D2;" data-path="css/colors/main-moodyblue.css"></li>
-          <li class="list-inline-item" style="background-color: #664C43;" data-path="css/colors/main-brown.css"></li>
-          <li class="list-inline-item" style="background-color: #4770D9;" data-path="css/colors/main-royalblue.css"></li>
-          <li class="list-inline-item" style="background-color: #ffb100;" data-path="css/colors/main-darkyellow.css"></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-  <!-- endremoveIf(customizerDist)-->
-  <!-- Scripts-->
-  <script src="js/jquery.min.js"></script>
-  <script src="js/bootstrap.bundle.min.js"></script>
-  <script src="js/imagesloaded.pkgd.min.js"></script>
-  <script src="js/isotope.pkgd.min.js"></script>
-  <script src="js/animatedModal.js"></script>
-  <script src="js/tiny-slider.js"></script>
-  <script src="js/lity.min.js"></script>
-  <script src="js/simplebar.min.js"></script>
-  <script src="js/jquery.mb.YTPlayer.min.js"></script>
-  <script src="js/main.js"></script>
-  <!-- Custom JS (Add your custom JS scripts to this file)-->
-  <script src="js/custom.js"></script>
-  <!-- removeIf(customizerDist)-->
-  <script src="../customizer/main.js"></script>
-  <!-- endremoveIf(customizerDist)-->
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+        <h2 class="section-title">Projects & Research</h2>
+        <div class="projects-grid">
+            <div class="project">
+                <div class="project-header">
+                    <div class="project-icon">✨</div>
+                </div>
+                <div class="project-body">
+                    <h3 class="project-title">Generative AI Research</h3>
+                    <p class="project-desc">Research in foundation models, prompt engineering, and enterprise AI
+                        applications.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">Generative AI</span>
+                        <span class="project-tag">Research</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project">
+                <div class="project-header">
+                    <div class="project-icon">⛓️</div>
+                </div>
+                <div class="project-body">
+                    <h3 class="project-title">Blockchain Transaction System</h3>
+                    <p class="project-desc">Commercial blockchain implementation with secure transaction management.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">Python</span>
+                        <span class="project-tag">Blockchain</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project">
+                <div class="project-header">
+                    <div class="project-icon">🎙️</div>
+                </div>
+                <div class="project-body">
+                    <h3 class="project-title">Voice Emotion Analysis</h3>
+                    <p class="project-desc">Deep learning model for emotion prediction from voice tone.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">Deep Learning</span>
+                        <span class="project-tag">NLP</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project">
+                <div class="project-header">
+                    <div class="project-icon">🔍</div>
+                </div>
+                <div class="project-body">
+                    <h3 class="project-title">Object Classification</h3>
+                    <p class="project-desc">Real-time object detection using TensorFlow Detection API.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">TensorFlow</span>
+                        <span class="project-tag">Computer Vision</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project">
+                <div class="project-header">
+                    <div class="project-icon">💼</div>
+                </div>
+                <div class="project-body">
+                    <h3 class="project-title">Enterprise AI @ TCS</h3>
+                    <p class="project-desc">AI initiatives driving innovation and system efficiencies.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">Enterprise AI</span>
+                        <span class="project-tag">Innovation</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project">
+                <div class="project-header">
+                    <div class="project-icon">📚</div>
+                </div>
+                <div class="project-body">
+                    <h3 class="project-title">TensorFlow Learning</h3>
+                    <p class="project-desc">Collection of ML algorithms and neural network implementations.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">TensorFlow</span>
+                        <span class="project-tag">ML</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+        <h2 class="section-title">Get in Touch</h2>
+        <div class="contact-grid">
+            <div>
+                <h3>Let's Build Something Amazing</h3>
+                <p>Interested in discussing AI research, Generative AI projects, or potential collaborations? Feel free
+                    to reach out!</p>
+
+                <div class="contact-links">
+                    <a href="mailto:ishavverma03@gmail.com" class="contact-link">
+                        <div class="contact-icon">📧</div>
+                        <div class="contact-text">
+                            <span class="contact-label">Email</span>
+                            <span class="contact-value">ishavverma03@gmail.com</span>
+                        </div>
+                    </a>
+
+                    <a href="https://www.linkedin.com/in/ishavverma" target="_blank" class="contact-link">
+                        <div class="contact-icon">💼</div>
+                        <div class="contact-text">
+                            <span class="contact-label">LinkedIn</span>
+                            <span class="contact-value">Connect with me</span>
+                        </div>
+                    </a>
+
+                    <a href="https://github.com/ishavverma" target="_blank" class="contact-link">
+                        <div class="contact-icon">💻</div>
+                        <div class="contact-text">
+                            <span class="contact-label">GitHub</span>
+                            <span class="contact-value">View my code</span>
+                        </div>
+                    </a>
+
+                    <a href="https://www.credly.com/users/ishavverma" target="_blank" class="contact-link">
+                        <div class="contact-icon">🏆</div>
+                        <div class="contact-text">
+                            <span class="contact-label">Credly</span>
+                            <span class="contact-value">View certifications</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div style="display: flex; align-items: center; justify-content: center;">
+                <svg width="280" height="280" viewBox="0 0 280 280">
+                    <defs>
+                        <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#6366f1;stop-opacity:0.8" />
+                            <stop offset="100%" style="stop-color:#8b5cf6;stop-opacity:0.8" />
+                        </linearGradient>
+                    </defs>
+                    <circle cx="140" cy="140" r="100" fill="none" stroke="url(#grad)" stroke-width="1" opacity="0.3" />
+                    <circle cx="140" cy="140" r="70" fill="none" stroke="url(#grad)" stroke-width="1" opacity="0.5" />
+                    <circle cx="140" cy="140" r="40" fill="url(#grad)" opacity="0.7" />
+                    <text x="140" y="155" font-size="50" fill="white" text-anchor="middle">🚀</text>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p><strong>Ishav Verma</strong> - AI Researcher & Generative AI Specialist</p>
+        <p>Product Engineer (GenAI) @ TCS | AWS & IBM Certified | 16+ Certifications</p>
+        <p style="margin-top: 1rem;">© 2026 - Crafted with passion for AI</p>
+    </footer>
+
+    <script>
+        // Minimal Neural Network Canvas
+        const canvas = document.getElementById('neural-canvas');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        let mouseX = canvas.width / 2;
+        let mouseY = canvas.height / 2;
+
+        const particles = [];
+        const particleCount = 100; // Minimal, clean
+        const maxDistance = 150;
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.vx = (Math.random() - 0.5) * 0.3;
+                this.vy = (Math.random() - 0.5) * 0.3;
+                this.radius = 2;
+            }
+
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+
+                // Bounce off edges
+                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+
+                // Subtle mouse interaction
+                const dx = this.x - mouseX;
+                const dy = this.y - mouseY;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+
+                if (dist < 100) {
+                    const force = (100 - dist) / 100;
+                    this.vx += (dx / dist) * force * 0.05;
+                    this.vy += (dy / dist) * force * 0.05;
+                }
+
+                // Damping
+                this.vx *= 0.99;
+                this.vy *= 0.99;
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(99, 102, 241, 0.6)';
+                ctx.fill();
+            }
+        }
+
+        for (let i = 0; i < particleCount; i++) {
+            particles.push(new Particle());
+        }
+
+        function drawConnections() {
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < maxDistance) {
+                        ctx.beginPath();
+                        ctx.strokeStyle = `rgba(99, 102, 241, ${0.15 * (1 - distance / maxDistance)})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            drawConnections();
+
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>
