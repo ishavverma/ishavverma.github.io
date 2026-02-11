@@ -1,139 +1,250 @@
-// Smooth Scroll & Navigation
-document.querySelectorAll('.nav-link').forEach(link => {
-    link.addEventListener('click', function(e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href');
-        const targetSection = document.querySelector(targetId);
-        
-        targetSection.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
+/* ═══════════════════════════════════════════════════════════════
+   THE PRINCIPAL ARCHITECT — Interactions
+   Midnight Executive Theme
+   ═══════════════════════════════════════════════════════════════ */
+
+document.addEventListener('DOMContentLoaded', () => {
+
+
+    // ══════════════════════════════════════════════════════════════
+    // CONSTELLATION PARTICLE BACKGROUND
+    // ══════════════════════════════════════════════════════════════
+    const particleCanvas = document.getElementById('particles-canvas');
+    if (particleCanvas) {
+        const pCtx = particleCanvas.getContext('2d');
+        let particles = [];
+        let animFrameId;
+        const PARTICLE_COUNT = 60;
+        const CONNECTION_DIST = 150;
+        const PARTICLE_OPACITY = 0.08; // very subtle
+        const LINE_OPACITY = 0.05;
+
+        function resizeParticleCanvas() {
+            particleCanvas.width = window.innerWidth;
+            particleCanvas.height = window.innerHeight;
+        }
+
+        function createParticles() {
+            particles = [];
+            for (let i = 0; i < PARTICLE_COUNT; i++) {
+                particles.push({
+                    x: Math.random() * particleCanvas.width,
+                    y: Math.random() * particleCanvas.height,
+                    vx: (Math.random() - 0.5) * 0.3,
+                    vy: (Math.random() - 0.5) * 0.3,
+                    r: Math.random() * 1.5 + 0.5
+                });
+            }
+        }
+
+        function drawParticles() {
+            pCtx.clearRect(0, 0, particleCanvas.width, particleCanvas.height);
+
+            // Draw connections
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    if (dist < CONNECTION_DIST) {
+                        const opacity = LINE_OPACITY * (1 - dist / CONNECTION_DIST);
+                        pCtx.beginPath();
+                        pCtx.strokeStyle = `rgba(74, 158, 255, ${opacity})`;
+                        pCtx.lineWidth = 0.5;
+                        pCtx.moveTo(particles[i].x, particles[i].y);
+                        pCtx.lineTo(particles[j].x, particles[j].y);
+                        pCtx.stroke();
+                    }
+                }
+            }
+
+            // Draw particles
+            for (const p of particles) {
+                pCtx.beginPath();
+                pCtx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                pCtx.fillStyle = `rgba(74, 158, 255, ${PARTICLE_OPACITY})`;
+                pCtx.fill();
+
+                // Move
+                p.x += p.vx;
+                p.y += p.vy;
+
+                // Wrap around edges
+                if (p.x < 0) p.x = particleCanvas.width;
+                if (p.x > particleCanvas.width) p.x = 0;
+                if (p.y < 0) p.y = particleCanvas.height;
+                if (p.y > particleCanvas.height) p.y = 0;
+            }
+
+            animFrameId = requestAnimationFrame(drawParticles);
+        }
+
+        resizeParticleCanvas();
+        createParticles();
+        drawParticles();
+
+        window.addEventListener('resize', () => {
+            resizeParticleCanvas();
+            createParticles();
         });
-        
-        document.querySelectorAll('.nav-link').forEach(navLink => {
-            navLink.classList.remove('active');
+    }
+
+
+    // ══════════════════════════════════════════════════════════════
+    // HEADER SCROLL
+    // ══════════════════════════════════════════════════════════════
+    const header = document.getElementById('site-header');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 60) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    }, { passive: true });
+
+
+    // ══════════════════════════════════════════════════════════════
+    // MOBILE NAV
+    // ══════════════════════════════════════════════════════════════
+    const navToggle = document.getElementById('nav-toggle');
+    const navLinks = document.getElementById('nav-links');
+
+    navToggle.addEventListener('click', () => {
+        const isOpen = navLinks.classList.toggle('open');
+        navToggle.classList.toggle('active');
+        navToggle.setAttribute('aria-expanded', isOpen);
+    });
+
+    navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('open');
+            navToggle.classList.remove('active');
+            navToggle.setAttribute('aria-expanded', 'false');
         });
-        this.classList.add('active');
     });
-});
 
-// Active Navigation on Scroll
-window.addEventListener('scroll', () => {
-    const sections = document.querySelectorAll('section');
-    const navLinks = document.querySelectorAll('.nav-link');
-    
-    let current = '';
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-        if (window.pageYOffset >= sectionTop - 200) {
-            current = section.getAttribute('id');
-        }
-    });
-    
-    navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === `#${current}`) {
-            link.classList.add('active');
-        }
-    });
-});
 
-// Skill Progress Animation
-const observerOptions = {
-    threshold: 0.5,
-    rootMargin: '0px'
-};
-
-const skillObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('in-view');
-            const progressBars = entry.target.querySelectorAll('.skill-progress');
-            progressBars.forEach(bar => {
-                const progress = bar.getAttribute('data-progress');
-                bar.style.setProperty('--progress-width', `${progress}%`);
-                bar.style.width = `${progress}%`;
-            });
-        }
-    });
-}, observerOptions);
-
-document.querySelectorAll('.skill-category').forEach(category => {
-    skillObserver.observe(category);
-});
-
-// Certifications Filter
-const filterButtons = document.querySelectorAll('.filter-btn');
-const certCards = document.querySelectorAll('.cert-card');
-
-filterButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        const filter = button.getAttribute('data-filter');
-        
-        filterButtons.forEach(btn => btn.classList.remove('active'));
-        button.classList.add('active');
-        
-        certCards.forEach(card => {
-            const category = card.getAttribute('data-category');
-            
-            if (filter === 'all' || category === filter) {
-                card.style.display = 'block';
-                setTimeout(() => {
-                    card.style.opacity = '1';
-                    card.style.transform = 'scale(1)';
-                }, 10);
-            } else {
-                card.style.opacity = '0';
-                card.style.transform = 'scale(0.8)';
-                setTimeout(() => {
-                    card.style.display = 'none';
-                }, 300);
+    // ══════════════════════════════════════════════════════════════
+    // SMOOTH SCROLL
+    // ══════════════════════════════════════════════════════════════
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', e => {
+            e.preventDefault();
+            const target = document.querySelector(anchor.getAttribute('href'));
+            if (target) {
+                const offset = 80;
+                const y = target.getBoundingClientRect().top + window.pageYOffset - offset;
+                window.scrollTo({ top: y, behavior: 'smooth' });
             }
         });
     });
-});
 
-// Fade In Animation on Scroll
-const fadeObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
+
+    // ══════════════════════════════════════════════════════════════
+    // SCROLL REVEAL (gentle fade, no bounce)
+    // ══════════════════════════════════════════════════════════════
+    const revealElements = document.querySelectorAll('[data-reveal]');
+
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+                setTimeout(() => {
+                    entry.target.classList.add('revealed');
+                }, index * 80);
+                revealObserver.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.12,
+        rootMargin: '0px 0px -30px 0px'
+    });
+
+    revealElements.forEach(el => revealObserver.observe(el));
+
+
+    // ══════════════════════════════════════════════════════════════
+    // DIGITAL SIGNATURE ANIMATION
+    // ══════════════════════════════════════════════════════════════
+    const canvas = document.getElementById('signature-canvas');
+    if (canvas) {
+        const ctx = canvas.getContext('2d');
+        const dpr = window.devicePixelRatio || 1;
+
+        const rect = canvas.getBoundingClientRect();
+        canvas.width = rect.width * dpr;
+        canvas.height = rect.height * dpr;
+        ctx.scale(dpr, dpr);
+
+        const signatureText = 'Ishav Verma';
+        let drawn = false;
+
+        function drawSignature() {
+            if (drawn) return;
+            drawn = true;
+
+            ctx.clearRect(0, 0, rect.width, rect.height);
+            ctx.font = 'italic 40px "Playfair Display", Georgia, serif';
+            ctx.fillStyle = '#E8E6E3';
+            ctx.globalAlpha = 0;
+
+            const textWidth = ctx.measureText(signatureText).width;
+            const startX = 0; // left-aligned for dark theme
+            const startY = 65;
+
+            let charIndex = 0;
+            const chars = signatureText.split('');
+
+            function drawNextChar() {
+                if (charIndex >= chars.length) {
+                    setTimeout(drawUnderline, 250);
+                    return;
+                }
+
+                const preceding = signatureText.substring(0, charIndex);
+                const x = startX + ctx.measureText(preceding).width;
+
+                ctx.globalAlpha = 1;
+                ctx.fillText(chars[charIndex], x, startY);
+
+                charIndex++;
+                setTimeout(drawNextChar, 70 + Math.random() * 50);
+            }
+
+            function drawUnderline() {
+                const lineY = startY + 14;
+                const lineStartX = startX;
+                const lineEndX = startX + textWidth;
+                let currentX = lineStartX;
+
+                ctx.strokeStyle = 'rgba(74, 158, 255, 0.4)';
+                ctx.lineWidth = 1;
+                ctx.globalAlpha = 1;
+                ctx.beginPath();
+                ctx.moveTo(lineStartX, lineY);
+
+                function animateLine() {
+                    if (currentX >= lineEndX) return;
+                    currentX += 3;
+                    ctx.lineTo(currentX, lineY + (Math.random() - 0.5) * 1);
+                    ctx.stroke();
+                    requestAnimationFrame(animateLine);
+                }
+                animateLine();
+            }
+
+            drawNextChar();
         }
-    });
-}, {
-    threshold: 0.1
-});
 
-document.querySelectorAll('.fade-in').forEach(element => {
-    fadeObserver.observe(element);
-});
+        const heroObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    setTimeout(drawSignature, 600);
+                    heroObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.3 });
 
-// Parallax Effect for Hero Background
-window.addEventListener('scroll', () => {
-    const scrolled = window.pageYOffset;
-    const cube = document.querySelector('.cube-container');
-    const orbs = document.querySelectorAll('.orb');
-    
-    if (cube) {
-        cube.style.transform = `translate(-50%, -50%) translateY(${scrolled * 0.5}px)`;
+        heroObserver.observe(document.getElementById('hero'));
     }
-    
-    orbs.forEach((orb, index) => {
-        const speed = 0.3 + (index * 0.1);
-        orb.style.transform = `translateY(${scrolled * speed}px)`;
-    });
-});
 
-// Initialize
-document.addEventListener('DOMContentLoaded', () => {
-    // Add fade-in class to sections
-    document.querySelectorAll('section').forEach(section => {
-        section.classList.add('fade-in');
-    });
-    
-    // Set initial skill progress
-    document.querySelectorAll('.skill-progress').forEach(bar => {
-        bar.style.width = '0';
-    });
 });
