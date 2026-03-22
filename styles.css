@@ -17,7 +17,7 @@
   /* Text */
   --text-primary: #E8E6E3;
   --text-secondary: #9A9A9A;
-  --text-tertiary: #5A5A5A;
+  --text-tertiary: #7A7A7A;
   --text-headline: #F5F3F0;
 
   /* Accent — Electric Blue */
@@ -74,9 +74,16 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: var(--header-h);
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Accessibility Focus States */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
 }
 
 body {
@@ -650,6 +657,16 @@ h4 {
 .status-prototype {
   background: rgba(255, 255, 255, 0.05);
   color: var(--text-tertiary);
+}
+
+.status-implemented {
+  background: rgba(46, 204, 113, 0.12);
+  color: #2ECC71;
+}
+
+.status-research {
+  background: rgba(155, 89, 182, 0.12);
+  color: #9B59B6;
 }
 
 .brief-title {
